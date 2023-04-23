@@ -1,0 +1,16 @@
+.error-box {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  width: 100%;
+  background-color: #e41f1d;
+  color: white;
+  padding: 5px 10px;
+  vertical-align: middle;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.error-box i {
+  margin-right: 5px;
+}
