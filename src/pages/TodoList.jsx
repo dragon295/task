@@ -3,6 +3,7 @@ import TodoItems from './TodoItems';
 import BulkAction from '../components/BulkAction';
 import Input from '../components/InputComponent';
 import shortid from 'shortid';
+import Confirm from '../components/Confirm';
 
 const TodoList = ({
   task,
@@ -14,6 +15,9 @@ const TodoList = ({
 }) => {
   const [search, setSearch] = useState('');
   const [singleTask, setSingleTask] = useState(task);
+  const [modalDelete, setModalDelete] = useState(false);
+  const [actionTypes, setActionTypes] = useState('');
+  const [showIdDelete, setShowIdDelete] = useState('');
 
   const handleChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -66,15 +70,15 @@ const TodoList = ({
     setArrTask((prevState) => prevState.filter((item) => item.id !== id));
   };
 
-  const doneAction = () => {
-    setArrTask((prevState) =>
-      prevState.map((item) => ({ ...item, isDone: true }))
-    );
-  };
-
   const bulkAction = () => {
     setArrTask((prevState) =>
       prevState.filter((item) => item.isDone === false)
+    );
+  };
+
+  const doneAction = () => {
+    setArrTask((prevState) =>
+      prevState.map((item) => ({ ...item, isDone: true }))
     );
   };
 
@@ -84,8 +88,19 @@ const TodoList = ({
     setArrTask(arrTask);
   }, [arrTask]);
 
+  console.log(actionTypes);
+
   return (
     <div className='todo-list'>
+      <Confirm
+        modalDelete={modalDelete}
+        bulkAction={bulkAction}
+        setModalDelete={setModalDelete}
+        actionTypes={actionTypes}
+        showIdDelete={showIdDelete}
+        handleCLickItem={removeItem}
+      />
+
       <h1 className='title-todo-list'>To do List</h1>
 
       <Input
@@ -112,12 +127,19 @@ const TodoList = ({
               handleChangeValue={handleUpdateValue}
               handleDateChange={handleDateUpdate}
               setShowModal={setShowModal}
+              setModalDelete={setModalDelete}
+              setActionTypes={setActionTypes}
+              setShowIdDelete={setShowIdDelete}
             />
           );
         })}
 
       {arrTask.filter((item) => item.isDone === true).length > 0 && (
-        <BulkAction bulkAction={bulkAction} doneAction={doneAction} />
+        <BulkAction
+          doneAction={doneAction}
+          setModalDelete={setModalDelete}
+          setActionTypes={setActionTypes}
+        />
       )}
     </div>
   );

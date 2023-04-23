@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './Button';
 
-const BulkAction = ({ bulkAction, doneAction }) => {
+const BulkAction = ({ doneAction, setModalDelete, setActionTypes }) => {
   return (
     <div className='box-bulk-action'>
       <h2>Bulk Action</h2>
@@ -17,7 +17,10 @@ const BulkAction = ({ bulkAction, doneAction }) => {
         <Button
           type={'remove-todo-list'}
           isSubmit={false}
-          onClick={bulkAction}
+          onClick={() => {
+            setModalDelete(true);
+            setActionTypes('bulk-action');
+          }}
           content={'Remove'}
         />
       </div>

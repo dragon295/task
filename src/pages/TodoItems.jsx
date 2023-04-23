@@ -7,14 +7,16 @@ const priorityArr = ['low', 'normal', 'high'];
 const TodoItems = ({
   singleTask,
   item,
-  removeItem,
   handleCheckboxChange,
   handleSubmitUpdateTask,
   handleChangeValue,
   handleDateChange,
   getIdtoUpdateSingleTask,
+  setActionTypes,
+  setModalDelete,
+  setShowIdDelete,
 }) => {
-  const { id, taskTitle, description, dateTime, priority, isDone } = item;
+  const { id, taskTitle, isDone } = item;
 
   const [showDetail, setShowDetail] = useState(false);
 
@@ -46,7 +48,11 @@ const TodoItems = ({
             type={'remove-todo-list'}
             isSubmit={false}
             content={'Remove'}
-            onClick={() => removeItem(id)}
+            onClick={() => {
+              setActionTypes('delete-item');
+              setModalDelete(true);
+              setShowIdDelete(id);
+            }}
           />
         </div>
       </div>

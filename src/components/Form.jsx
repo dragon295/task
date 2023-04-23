@@ -9,7 +9,6 @@ const Form = ({
   task,
   errorTitle,
   handleChangeValue,
-  description,
   handleDateChange,
   priorityArr,
   isAdd,
