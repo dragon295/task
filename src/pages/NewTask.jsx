@@ -1,10 +1,5 @@
 import React from 'react';
-
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import Error from '../components/Error';
-import Button from '../components/Button';
-import Input from '../components/input';
 import Form from '../components/Form';
 
 const NewTask = ({
@@ -14,11 +9,7 @@ const NewTask = ({
   handleChangeValue,
   handleDateChange,
   handleSubmit,
-  showModal,
-  setShowModal,
 }) => {
-  const { taskTitle, description, dateTime, priority } = task;
-
   return (
     <div className='new-task'>
       <h1 className='title-new-task'>New Task</h1>

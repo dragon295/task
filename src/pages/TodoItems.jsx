@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Button from '../components/Button';
-import Input from '../components/InputComponent';
-import Form from '../components/Form';
 
 const priorityArr = ['low', 'normal', 'high'];
 
