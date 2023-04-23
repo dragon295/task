@@ -29,7 +29,7 @@ const Form = ({
 
       <h3>Description</h3>
       <TextArea
-        description={description}
+        description={task.description}
         handleChangeValue={handleChangeValue}
       />
 
